@@ -80,7 +80,7 @@ else
     group 'root'
     mode '0644'
     variables({
-      :server_name => node['sogo']['web_app_dns_name']
+      :server_name => node['sogo']['web_app_dns_name'],
       :server_url => 'http://' + node['sogo']['web_app_dns_name']
     })
   end
