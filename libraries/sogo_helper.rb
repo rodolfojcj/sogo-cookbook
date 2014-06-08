@@ -53,7 +53,7 @@ module Sogo
       # for cases like "uid" and "mail" when present in
       # a JSON array like this: "bindFields": ["uid", "mail"]
       if current_element.class == String
-        answer = '  ' * depth_level + current_element
+        answer << '  ' * depth_level + current_element
       end
     end
 
