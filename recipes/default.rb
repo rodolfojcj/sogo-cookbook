@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-chef_gem 'json'
-chef_gem 'deep_merge'
 ::Chef::Resource::Template.send(:include, Sogo::Helper)
 
 include_recipe "apt"

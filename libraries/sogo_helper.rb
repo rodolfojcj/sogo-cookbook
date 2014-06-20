@@ -17,6 +17,14 @@
 # limitations under the License.
 #
 
+# see Travis Carona's comment at https://sethvargo.com/using-gems-with-chef/
+begin
+  gem "deep_merge"
+rescue LoadError
+  system("gem install --no-rdoc --no-ri deep_merge")
+  Gem.clear_paths
+end
+
 require 'json'
 require 'deep_merge'
 
