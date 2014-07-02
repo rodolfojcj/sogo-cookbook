@@ -18,8 +18,10 @@
 #
 
 ::Chef::Resource::Template.send(:include, Sogo::Helper)
+::Chef::Resource::RubyBlock.send(:include, Sogo::Helper)
 
 include_recipe "apt"
+include_recipe "base-debian-ubuntu::usefulcommands"
 
 apt_repository 'sogo' do
   # deb http://inverse.ca/ubuntu precise precise
@@ -29,6 +31,7 @@ apt_repository 'sogo' do
   components   [node['lsb']['codename']]
   keyserver    'keys.gnupg.net'
   key          '810273C4'
+  notifies :run, "execute[force-apt-get-update-execution]", :immediately
 end
 
 package 'sogo'
@@ -49,17 +52,23 @@ template config_base_json do
   })
 end
 
-template "/etc/sogo/sogo.conf" do
-  source 'sogo.conf.erb'
-  owner 'root'
-  group 'sogo'
-  mode '0640'
-  base_config = File.read(config_base_json) if File.exists?(config_base_json)
-  specific_config = node['sogo']['specific_config_json']
-  plist = generate_plist(merge_json_to_hash(base_config, specific_config))
-  variables({
-    :plist => plist
-  })
+ruby_block 'generate-sogo-config-file' do
+  block do
+    require 'fileutils'
+    config_file = '/etc/sogo/sogo.conf'
+    base_config = File.read(config_base_json)
+    specific_config = node['sogo']['specific_config_json']
+    plist = generate_plist(merge_json_to_hash(base_config, specific_config))
+    File.open(config_file, 'w') {|f|
+      f << "{\n"
+      plist.each {|l|
+        f << l + "\n"
+      }
+      f << "}"
+    }
+    FileUtils.chown('root', 'sogo', config_file)
+    FileUtils.chmod(0640, config_file)
+  end
 end
 
 if node['sogo']['use_vhost'] == true
