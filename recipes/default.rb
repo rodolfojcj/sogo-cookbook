@@ -76,7 +76,11 @@ if node['sogo']['use_vhost'] == true
   web_app node['sogo']['web_app_name'] do
     server_name node['sogo']['web_app_dns_name']
     #docroot ???
-    template "SOGo_apache_vhost.conf.erb"
+    template "SOGo_apache_vhost.conf.erb" if node['sogo']['use_ssl_with_vhost'] == false
+    if node['sogo']['use_ssl_with_vhost'] == true
+      template "SOGo_apache_vhost_ssl.conf.erb"
+      ssl_params node['sogo']['apache_ssl_params']
+    end
     log_dir node['apache']['log_dir']
   end
 else
@@ -97,6 +101,7 @@ include_recipe "apache2::mod_proxy"
 include_recipe "apache2::mod_proxy_http"
 include_recipe "apache2::mod_headers"
 include_recipe "apache2::mod_rewrite"
+include_recipe "apache2::mod_ssl" if node['sogo']['use_ssl_with_vhost'] == true
 
 # needed for SOGo, just to read the new configuration
 service 'sogo' do

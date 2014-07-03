@@ -25,6 +25,13 @@ default['sogo']['db_password'] = 's4g4p1ssw4rd'
 # web
 default['sogo']['web_app_name'] = 'sogo'
 default['sogo']['use_vhost'] = false
+default['sogo']['use_ssl_with_vhost'] = false
+default['sogo']['apache_ssl_params'] = {
+  'SSLCertificateFile' => '/etc/ssl/certs/ssl-cert-snakeoil.pem',
+  'SSLCertificateKeyFile' => '/etc/ssl/private/ssl-cert-snakeoil.key',
+  '#SSLCertificateChainFile' => '??/etc/ssl/certs/ssl-cert-snakeoil.pem',
+  '#SSLCACertificateFile' => '??/etc/ssl/certs/GS_AlphaSSL_CA_bundle.crt'
+}
 default['sogo']['web_app_dns_name'] = 'sogo.yourdomainhere.com'
 # mail
 default['sogo']['imap_server'] = '127.0.0.1'

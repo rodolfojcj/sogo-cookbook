@@ -1,6 +1,10 @@
 sogo CHANGELOG
 ==============
 
+0.3.0
+-----
+- Added the option to set SSL parameters on Apache virtual host configuration
+
 0.2.2
 -----
 - Change and fix in the generation of the /etc/sogo/sogo.conf file
