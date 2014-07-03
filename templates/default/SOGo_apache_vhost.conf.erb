@@ -42,7 +42,7 @@
 
   Redirect permanent /index.html http://<%= @params[:server_name] %>/SOGo
 
-  LogLevel info
+  LogLevel warn
   ErrorLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
   CustomLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
 
