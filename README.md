@@ -19,7 +19,7 @@ Requirements
 
 #### Platforms
 
-For now just Debian or Ubuntu. Other Linux based distributions where SOGo works could be supported with some apatations
+For now just Debian or Ubuntu. Other Linux based distributions where SOGo works could be supported with some adaptations
 
 #### Testing
 
@@ -93,6 +93,7 @@ node.default['sogo']['use_vhost'] = true
 include_recipe "sogo::pgdb"
 include_recipe "sogo::default"
 ```
+
 Note that the value of `node.default['sogo']['specific_config_json']` will be merged with the hardcoded values of `templates/default/sogo_base_config.json.erb`. In that merging the specific values have higher precedence, so for example, to use another SMTP server just include this value to `node.default['sogo']['specific_config_json']`:
 
 ```json
@@ -109,12 +110,12 @@ node.default['sogo']['specific_config_json'] = <<-EOH
 Contributing
 ------------
 
-For now just write me.
+Use it, fork it and every improvement, comment and correction will be welcomed.
 
 License and Authors
 -------------------
 
-* Author:: Rodolfo Castellanos: <rodolfojcj@yahoo.com>
+* Author:: Rodolfo Castellanos: rodolfojcj at yahoo.com
 
 * Copyright:: 2014, OpenSinergia
 
