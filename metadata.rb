@@ -10,3 +10,7 @@ depends "apt"
 depends "apache2"
 depends "database"
 depends "postgres"
+
+%w{debian ubuntu}.each do |os|
+  supports os
+end

@@ -1,6 +1,10 @@
 sogo CHANGELOG
 ==============
 
+0.3.2
+-----
+- Added supported platforms in metadata.rb file
+
 0.3.1
 -----
 - Minor changes
