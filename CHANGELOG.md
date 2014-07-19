@@ -1,6 +1,12 @@
 sogo CHANGELOG
 ==============
 
+0.3.3
+-----
+- Single strings elements generated for sogo.conf file are now surrounded by quotes
+- Added newline character at the end of beginning comments in sogo.conf file
+- Change in template files to avoid unnecessary file updates when Chef runs
+
 0.3.2
 -----
 - Added supported platforms in metadata.rb file
