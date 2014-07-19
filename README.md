@@ -90,8 +90,9 @@ EOH
 node.default['sogo']['web_app_dns_name'] = 'your_real_sogo_domain_here.com'
 node.default['sogo']['use_vhost'] = true
 
-include_recipe "sogo::pgdb"
+# order is important: default recipe is needed before pgdb to configure APT repository for SOGo
 include_recipe "sogo::default"
+include_recipe "sogo::pgdb"
 ```
 
 Note that the value of `node.default['sogo']['specific_config_json']` will be merged with the hardcoded values of `templates/default/sogo_base_config.json.erb`. In that merging the specific values have higher precedence, so for example, to use another SMTP server just include this value to `node.default['sogo']['specific_config_json']`:

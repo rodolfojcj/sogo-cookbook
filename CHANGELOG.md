@@ -1,6 +1,10 @@
 sogo CHANGELOG
 ==============
 
+0.3.4
+-----
+- Documentation is now clear in the order of inclusion of recipes
+
 0.3.3
 -----
 - Single strings elements generated for sogo.conf file are now surrounded by quotes
