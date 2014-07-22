@@ -84,6 +84,7 @@ if node['sogo']['use_vhost'] == true
       ssl_params node['sogo']['apache_ssl_params']
     end
     log_dir node['apache']['log_dir']
+    notifies :restart, 'service[apache2]', :delayed
   end
 else
   # location within a virtual host
@@ -96,6 +97,7 @@ else
       :server_name => node['sogo']['web_app_dns_name'],
       :server_url => 'http://' + node['sogo']['web_app_dns_name']
     })
+    notifies :restart, 'service[apache2]', :delayed
   end
 end
 

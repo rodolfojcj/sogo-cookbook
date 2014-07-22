@@ -1,6 +1,10 @@
 sogo CHANGELOG
 ==============
 
+0.3.5
+-----
+- Notify apache service restarting after configuring virtual host
+
 0.3.4
 -----
 - Documentation is now clear in the order of inclusion of recipes
