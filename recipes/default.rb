@@ -111,3 +111,7 @@ include_recipe "apache2::mod_ssl" if node['sogo']['use_ssl_with_vhost'] == true
 service 'sogo' do
   action [:enable, :restart]
 end
+
+service 'apache2' do
+  action [:enable, :restart]
+end

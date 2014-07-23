@@ -1,6 +1,10 @@
 sogo CHANGELOG
 ==============
 
+0.3.6
+-----
+- Explicitly declared apache2 service to enable and restart it
+
 0.3.5
 -----
 - Notify apache service restarting after configuring virtual host
