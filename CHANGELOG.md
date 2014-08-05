@@ -1,6 +1,10 @@
 sogo CHANGELOG
 ==============
 
+0.3.7
+-----
+- Little fix in hardcode value for FQDN in template comment
+
 0.3.6
 -----
 - Explicitly declared apache2 service to enable and restart it
