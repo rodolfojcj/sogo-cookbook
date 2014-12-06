@@ -14,8 +14,12 @@
 
   <Directory /usr/lib/GNUstep/SOGo/>
     AllowOverride None
+<% if node['apache']['version'] == '2.4' -%>
+    Require all granted
+<% else -%>
     Order deny,allow
     Allow from all
+<% end -%>
   </Directory>
 
   <LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*\.(jpg|png|gif|css|js)">

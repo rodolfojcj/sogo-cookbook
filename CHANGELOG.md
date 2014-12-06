@@ -1,6 +1,10 @@
 sogo CHANGELOG
 ==============
 
+0.3.8
+-----
+- Adjustment to work fine with Apache 2.4 or lower versions
+
 0.3.7
 -----
 - Little fix in hardcode value for FQDN in template comment

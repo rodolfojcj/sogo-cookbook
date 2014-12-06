@@ -28,8 +28,12 @@
 
   <Directory /usr/lib/GNUstep/SOGo/>
     AllowOverride None
+<% if node['apache']['version'] == '2.4' -%>
+    Require all granted
+<% else -%>
     Order deny,allow
     Allow from all
+<% end -%>
   </Directory>
 
   <LocationMatch "^/SOGo/so/ControlPanel/Products/.*UI/Resources/.*\.(jpg|png|gif|css|js)">
@@ -48,8 +52,12 @@
     RequestHeader set "x-webobjects-server-protocol" "HTTP/1.0"
     RequestHeader set "x-webobjects-remote-host" %{REMOTE_HOST}e env=REMOTE_HOST
     AddDefaultCharset UTF-8
+<% if node['apache']['version'] == '2.4' -%>
+    Require all granted
+<% else -%>
     Order allow,deny
     Allow from all
+<% end -%>
   </Proxy>
 
   ## We use mod_rewrite to pass remote address to the SOGo proxy.
